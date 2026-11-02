@@ -30,7 +30,11 @@ def web_scrape(url:str)-> str:
     Scrape the content of a webpage and return the clean text from given url for deeper reading.
     """
     try:
-        response = requests.get(url,Timeout=8,headers={'User-Agent': 'Mozilla/5.0'})
+        response = requests.get(
+            url,
+            timeout=8,
+            headers={"User-Agent": "Mozilla/5.0"},
+        )
         response.raise_for_status()
         soup = BeautifulSoup(response.text, 'html.parser')
         # Remove script and style elements
@@ -42,8 +46,8 @@ def web_scrape(url:str)-> str:
         return f"Error scraping {url}: {str(e)}"
 
 
-result=web_scrape.invoke({"url": "https://en.wikipedia.org/wiki/Artificial_intelligence"})
-print(result)
+
+
 
 
 
